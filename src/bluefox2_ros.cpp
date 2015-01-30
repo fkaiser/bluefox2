@@ -6,6 +6,7 @@ Bluefox2Ros::Bluefox2Ros(const ros::NodeHandle& nh, const std::string& prefix)
     : CameraRosBase(nh, prefix), bluefox2_(identifier()), boost_(false) {
   bluefox2_.Open();
   SetHardwareId(bluefox2_.serial());
+  Advertise();
 
   // Some hack for getting hardware sync to work
   ros::NodeHandle cnh(nh, prefix);

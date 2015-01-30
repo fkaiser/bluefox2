@@ -57,8 +57,8 @@ add_executable(stereo_node
     src/stereo/stereo_main.cpp
     )
 target_link_libraries(stereo_node
-   ${PROJECT_NAME}
-   )
+    ${PROJECT_NAME}
+    )
 
 # dependencies
 add_dependencies(${PROJECT_NAME}
