@@ -1,4 +1,4 @@
-# FindMvimpact.cmake - Find mvimpact sdk, version >= 4.
+# FindmvIMPACT.cmake - Find mvIMPACT sdk, version >= 4.
 # Modified from FindEigen.cmake by alexs.mac@gmail.com  (Alex Stewart)
 #
 # This module defines the following variables:
@@ -139,7 +139,11 @@ endif()
 # Set standard CMake FindPackage variables if found.
 if(mvIMPACT_FOUND)
     set(mvIMPACT_INCLUDE_DIRS ${mvIMPACT_INCLUDE_DIR})
-    file(GLOB mvIMPACT_LIBRARIES ${mvIMPACT_LIBRARY_DIR}lib*.so)
+    list(APPEND mvIMPACT_LIBRARIES
+        ${mvIMPACT_LIBRARY_DIR}libmvBlueFOX.so
+        ${mvIMPACT_LIBRARY_DIR}libmvDeviceManager.so
+        ${mvIMPACT_LIBRARY_DIR}libmvPropHandling.so
+        )
 endif()
 
 # Handle REQUIRED / QUIET optional arguments.
