@@ -21,7 +21,8 @@ void SingleNode::Acquire() {
 
     const auto expose_us = bluefox2_ros_.camera().expose_us();
     const auto expose_duration = ros::Duration(expose_us * 1e-6 / 2);
-    const auto time = ros::Time::now() + expose_duration;
+// TODO: Find out what is exact time till sensors starts exposing after triggering signal was sent
+    const auto time =expose_duration;
 
     bluefox2_ros_.PublishCamera(time);
     Sleep();
