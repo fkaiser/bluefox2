@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
 
     bluefox2::SingleNode single_node(pnh);
 
+
     single_node.Run();
     ros::spin();
     single_node.End();

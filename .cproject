@@ -27,7 +27,7 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/camera_base/include/"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/bluefox2/include"/>
 									<listOptionValue builtIn="false" value="/opt/ros/indigo/include"/>
-									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/mavros_extras"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1208730001" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>

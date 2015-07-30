@@ -1,5 +1,4 @@
 #include "bluefox2/bluefox2_ros.h"
-
 namespace bluefox2 {
 
 Bluefox2Ros::Bluefox2Ros(const ros::NodeHandle& nh, const std::string& prefix)

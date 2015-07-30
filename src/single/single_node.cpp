@@ -9,15 +9,21 @@ void SingleNode::Acquire() {
     std::cout << "Boost mode!!!!!" << std::endl;
     bluefox2_ros_.RequestSingle();
   }
+
+  //Topic you want to subscribe
+
   std::cout<<"Starting here\n";
+
   while (is_acquire() && ros::ok()) {
 
     bluefox2_ros_.RequestSingle();
+
+
     const auto expose_us = bluefox2_ros_.camera().expose_us();
     const auto expose_duration = ros::Duration(expose_us * 1e-6 / 2);
     const auto time = ros::Time::now() + expose_duration;
-    bluefox2_ros_.PublishCamera(time);
 
+    bluefox2_ros_.PublishCamera(time);
     Sleep();
   }
 }
