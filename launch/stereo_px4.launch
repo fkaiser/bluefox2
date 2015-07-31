@@ -22,7 +22,7 @@
     <arg name="wbp" default="-1"/>
     <arg name="expose_us" default="5000"/>
     <arg name="gain_db" default="0.0"/>
-    <arg name="boost" default="false"/>
+    <arg name="boost" default="true"/>
     <arg name="mode" default="not working"/>
     <arg name="trigger" default="OnHighLevel"/>
 

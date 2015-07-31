@@ -8,6 +8,10 @@ void SingleNode::Acquire() {
   if (boost_) {
     std::cout << "Boost mode!!!!!" << std::endl;
     bluefox2_ros_.RequestSingle();
+    bluefox2_ros_.RequestSingle();
+    bluefox2_ros_.RequestSingle();
+    bluefox2_ros_.RequestSingle();
+    bluefox2_ros_.RequestSingle();
   }
 
   //Topic you want to subscribe
