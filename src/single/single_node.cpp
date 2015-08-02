@@ -33,14 +33,14 @@ void SingleNode::Acquire() {
     bluefox2_ros_.GrabandBufferImage();
 
     // Check whether there are cached images and corresponding time stamps in the buffer and if so stamp image and publish it in ROS network
-    bluefox2_ros_.StampandPublishImage();
+    bluefox2_ros_.PublishImagebuffer();
 
 
     //Sleep();
   }
 
   // Print out which image were left in the buffer
-  bluefox2_ros_.PrintImageBuffer();
+  //bluefox2_ros_.PrintImageBuffer();
 }
 
 void SingleNode::Setup(Bluefox2DynConfig &config) {
