@@ -25,7 +25,7 @@ void SingleNode::Acquire() {
     const auto time =expose_duration;
 
 
-    // Pumps time stamps of the triggering signal received from ROS network into the callback function BufferTimestamp() such that time stamp
+    // Pumps all published and available time stamps of the triggering signal received from ROS network into the callback function BufferTimestamp() such that time stamp
     // gets buffered
     ros::spinOnce();
 
