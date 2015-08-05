@@ -1,5 +1,6 @@
 <launch>
     <!-- Common Interface -->
+
     <arg name="device" default="25000060"/>
     <arg name="rate" default="20"/>
 
@@ -14,6 +15,7 @@
     <arg name="aec" default="0"/>
     <arg name="cbm" default="false"/>
     <arg name="ctm" default="2"/>
+
     <arg name="dcfm" default="0"/>
     <arg name="hdr" default="false"/>
     <arg name="wbp" default="-1"/>
@@ -24,6 +26,7 @@
     <arg name="jpeg_quality" default="80"/>
     <arg name="mode" default="not working"/>
      <arg name="trigger" default="OnHighLevel"/>
+
 
     <!-- Node Settings -->
     <arg name="output" default="screen"/>
@@ -50,12 +53,15 @@
         <param name="boost" type="bool" value="$(arg boost)"/>
         <param name="mm" type="int" value="$(arg mm)"/>
         <param name="image_raw/compressed/jpeg_quality" type="int" value="$(arg jpeg_quality)"/>
+
         <param name="mode" type="string" value="$(arg mode)"/>
         <param name="trigger" type="string" value="$(arg trigger)"/>
+
     </node>
 
     <!-- Proc -->
     <node if="$(arg proc)"
+
         pkg="image_proc" type="image_proc" name="image_proc" ns="$(arg camera)">
     </node>
 

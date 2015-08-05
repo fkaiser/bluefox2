@@ -18,12 +18,11 @@ void SingleNode::Acquire() {
 
 	  // Request an image, i.e. put Request Object in Request queue if a Request Object is available
     bluefox2_ros_.RequestSingle();
+    //// TODO: Find out what is exact time till sensors starts exposing after triggering signal was sent
     const auto expose_us = bluefox2_ros_.camera().expose_us();
     const auto expose_duration = ros::Duration(expose_us * 1e-6 / 2);
-
-// TODO: Find out what is exact time till sensors starts exposing after triggering signal was sent
     const auto time =expose_duration;
-
+   // bluefox2_ros_.UpdateAdded2triggertime(time);
 
     // Pumps all published and available time stamps of the triggering signal received from ROS network into the callback function BufferTimestamp() such that time stamp
     // gets buffered
