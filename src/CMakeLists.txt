@@ -20,6 +20,10 @@ target_link_libraries(single_node ${PROJECT_NAME})
 add_executable(stereo_node stereo/stereo_main.cpp)
 target_link_libraries(stereo_node ${PROJECT_NAME})
 
+# start trigger singal node
+add_executable(start_triggering single/starttriggersignal.cpp)
+target_link_libraries(start_triggering ${PROJECT_NAME})
+
 # list_mvdevice
 add_executable(list_mvdevice list_mvdevice.cpp)
 target_link_libraries(list_mvdevice ${PROJECT_NAME} ${Boost_LIBRARIES})
