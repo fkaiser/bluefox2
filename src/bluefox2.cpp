@@ -63,6 +63,7 @@ void Bluefox2::RequestImages(int n) const {
 
 bool Bluefox2::GrabImage(sensor_msgs::Image &image_msg,
                          sensor_msgs::CameraInfo &cinfo_msg) {
+
   int request_nr = INVALID_ID;
 	  request_nr = fi_->imageRequestWaitFor(kTimeout);
   // Check if request nr is valid

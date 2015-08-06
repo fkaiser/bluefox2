@@ -22,7 +22,7 @@ void SingleNode::Acquire() {
     const auto expose_us = bluefox2_ros_.camera().expose_us();
     const auto expose_duration = ros::Duration(expose_us * 1e-6 / 2);
     const auto time =expose_duration;
-   // bluefox2_ros_.UpdateAdded2triggertime(time);
+    bluefox2_ros_.UpdateAdded2triggertime(time);
 
     // Pumps all published and available time stamps of the triggering signal received from ROS network into the callback function BufferTimestamp() such that time stamp
     // gets buffered
