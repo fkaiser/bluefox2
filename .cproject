@@ -27,8 +27,8 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/bluefox2/include"/>
 									<listOptionValue builtIn="false" value="/opt/ros/indigo/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/mavros_extras"/>
-									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1208730001" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -39,8 +39,8 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/bluefox2/include"/>
 									<listOptionValue builtIn="false" value="/opt/ros/indigo/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
-									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/bluefox2"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1990346077" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -96,6 +96,7 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/bluefox2"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1412599492" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -109,6 +110,7 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/bluefox2"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1472127164" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -127,6 +129,7 @@
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base/include"/>
 									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/devel/include/bluefox2"/>
+									<listOptionValue builtIn="false" value="/home/fkaiser/catkin_ws/src/camera_base"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.43126670" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
