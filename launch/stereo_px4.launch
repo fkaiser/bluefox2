@@ -25,10 +25,18 @@
     <arg name="boost" default="false"/>
     <arg name="mode" default="not working"/>
     <arg name="trigger" default="OnHighLevel"/>
-
+ 	<arg name="startsignal" default="starttrigger"/>
 
     <!-- Node Settings -->
     <arg name="output" default="screen"/>
+     
+     <!-- Node Start trigger signal -->
+    <node pkg="bluefox2" type="start_triggering" name="StarterTriggerSignal" output="$(arg output)">
+        <param name="cam1" type="string" value="$(arg left_camera_name)"/>
+        <param name="cam2" type="string" value="$(arg right_camera_name)"/>
+        <param name="starttopic" type="string" value= <$(arg startsignal)"/>
+    </node>
+     
      
      <!-- Node left camera camera -->
     <node pkg="bluefox2" type="single_node" name="$(arg left_camera_name)" output="$(arg output)">
