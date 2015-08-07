@@ -132,6 +132,11 @@ int main(int argc, char **argv)
   }
 
   // Send  start trigger signal
-  return v.sendtriggerservicecall();
+  ros::Rate r2(10); //   Number in Hz
+  while(v.sendtriggerservicecall() && ros::ok())
+  {
+	  ROS_INFO_STREAM("Retrying reaching pixhawk");
+	  r2.sleep();
+  }
 
 }

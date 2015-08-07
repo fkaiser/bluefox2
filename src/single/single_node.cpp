@@ -15,7 +15,12 @@ void SingleNode::Acquire() {
   }
 
 // Inform start trigger node that camera is ready and waits for trigger signal
-
+  ros::Rate r(10); //   Number in Hz
+while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
+{
+	ROS_INFO_STREAM("Retrying");
+	r.sleep();
+}
 
   while (is_acquire() && ros::ok()) {
 
