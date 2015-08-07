@@ -14,6 +14,7 @@ void SingleNode::Acquire() {
     bluefox2_ros_.RequestSingle();
   }
 
+// Inform start trigger node that camera is ready and waits for trigger signal
 
 
   while (is_acquire() && ros::ok()) {

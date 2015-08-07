@@ -3,7 +3,7 @@
 #include "std_msgs/Empty.h"
 #include <cstdlib>
 #include <string>
-
+#include <std_srvs/Trigger.h>
 // This node waits for single nodes to get ready and then call CommandTriggerControl service as soon it is available.
 
 class CamReady{
@@ -12,12 +12,13 @@ public:
 	CamReady(){
 		cam1_ok_=false;
 		cam2_ok_=false;
-		cam1_paramserver_name_="cam1";
-		cam2_paramserver_name_="cam2";
-		startopic_paramserver_name_="starttopic";
+		cam1_paramserver_name_="~cam1";
+		cam2_paramserver_name_="~cam2";
+		starttopic_paramserver_name_="~starttopic";
 		getnames();
 		subscribetocams();
 		client_ = n_.serviceClient<mavros::CommandTriggerControl>("/mavros/cmd/trigger_control");
+		advertisecamservice();
 	}
 
 	void cam1ready(const std_msgs::EmptyConstPtr& msg){
@@ -33,13 +34,27 @@ public:
 	void getnames(){
 		ros::param::get(cam1_paramserver_name_,cam1_name_);
 		ros::param::get(cam2_paramserver_name_,cam2_name_);
-		ros::param::get(startopic_paramserver_name_,topic_name_);
+		ros::param::get(starttopic_paramserver_name_,topic_name_);
 	}
 	void subscribetocams(){
 		cam1_sub_ = n_.subscribe(cam1_name_ + "/" + topic_name_,0,&CamReady::cam1ready,this);
 		cam2_sub_ = n_.subscribe(cam2_name_ + "/" + topic_name_,0,&CamReady::cam2ready,this);
 	}
 
+	bool servcam1(std_srvs::Trigger::Request &req,std_srvs::Trigger::Response &resp){
+		cam1_ok_=true;
+		resp.success=true;
+		ROS_INFO_STREAM("Camera " << cam1_name_<<" sent start ready-for-trigger signal");
+		return true;
+
+	}
+
+	bool servcam2(std_srvs::Trigger::Request &req,std_srvs::Trigger::Response &resp){
+		cam2_ok_=true;
+		resp.success=true;
+		return true;
+
+	}
 	bool cam1_ok()
 	{
 		if(cam1_ok_)
@@ -74,6 +89,12 @@ int sendtriggerservicecall(){
 
 
 }
+void advertisecamservice()
+{
+	server_cam1_=n_.advertiseService(cam1_name_ + "/" + topic_name_, &CamReady::servcam1,this);
+	server_cam2_=n_.advertiseService(cam2_name_ + "/" + topic_name_, &CamReady::servcam2,this);
+}
+
 
 private:
 	bool cam1_ok_;
@@ -83,12 +104,16 @@ private:
 	std::string topic_name_;
 	std::string cam1_paramserver_name_;
 	std::string cam2_paramserver_name_;
-	std::string startopic_paramserver_name_;
+	std::string starttopic_paramserver_name_;
 	ros::NodeHandle n_;
 	ros::Subscriber cam1_sub_;
 	ros::Subscriber cam2_sub_;
 	ros::ServiceClient client_;
-	 mavros::CommandTriggerControl srv_;
+	mavros::CommandTriggerControl srv_;
+	ros::ServiceServer server_cam1_;
+	ros::ServiceServer server_cam2_;
+
+
 };
 
 
