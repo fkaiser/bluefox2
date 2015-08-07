@@ -6,7 +6,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp nodelet camera_base
-    message_generation mavros
+    message_generation mavros std_srvs
     )
 find_package(mvIMPACT REQUIRED)
 find_package(Boost COMPONENTS program_options REQUIRED)
