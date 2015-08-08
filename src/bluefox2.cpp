@@ -353,4 +353,77 @@ void Bluefox2::SetTriggerOnHighLevel() const {
   std::cout << serial() << ": Set up triggering on high level." << std::endl<<"Expect triggering input at DigIn0"<<std::endl;
 }
 
-}  // namespace bluefox2
+
+void Bluefox2::Timesettings(int request_time, int expose_us) const{
+
+	// Change Request time to small value such that it remarks when first image arrives
+	cam_set_->imageRequestTimeout_ms.write(request_time);
+	 ClampProperty(cam_set_->expose_us, expose_us);
+	  cam_set_->expose_us.write(expose_us);
+
+}
+
+void Bluefox2::AwaitfirstTrigger()  {
+	int result = DMR_NO_ERROR;
+	result = fi_->imageRequestSingle();
+	if (result != DMR_NO_ERROR) {
+		std::cout << "Error while requesting image: "
+				<< ImpactAcquireException::getErrorCodeAsString(result)
+		<< std::endl;
+	}
+	ros::Rate r(50);
+	int request_nr = INVALID_ID;
+	while(ros::ok())
+	{
+
+		result = fi_->imageRequestSingle();
+
+		if (result == DMR_NO_ERROR){
+			request_nr = fi_->imageRequestWaitFor(5);
+
+			if(!fi_->isRequestNrValid(request_nr) && ros::ok()) {
+
+				std::cout << "The acquisition failed: " << ImpactAcquireException::getErrorCodeAsString(request_nr) << "\n";
+				std::cout<< "Clear whole buffer (request object queue, request queue, result queue)...\n";
+
+				// Clear buffer (Request queue and request object queue). Terminates all running image acquisitions associated with the queue bound
+				// to the specified image request control and in addition to that it will empty the queue of pending image requests for that queue.
+				fi_->imageRequestReset( 0, 0 );
+
+				// Clear locked images in result queue
+				while( ( request_nr= fi_->imageRequestWaitFor( 0 ) ) >= 0 )
+				{
+					fi_->imageRequestUnlock( request_nr);
+				}
+
+			}
+			else
+			{
+				request_ = fi_->getRequest(request_nr);
+
+				if (!request_->isOK()) {
+					// Unlock image
+					fi_->imageRequestUnlock(request_nr);
+				}
+				else
+				{
+					// Unlock image
+					fi_->imageRequestUnlock(request_nr);
+					break;
+				}
+
+			}
+			r.sleep();
+
+
+
+
+		}
+	}
+
+
+}
+} // namespace bluefox2
+
+
+

@@ -24,6 +24,7 @@ class Bluefox2 {
                                           : 0;
   }
 
+
   void OpenDevice();
   void RequestSingle() const;
   void Configure(Bluefox2DynConfig &config);
@@ -34,6 +35,9 @@ class Bluefox2 {
   void SetMaster() const;
   void SetSlave() const;
   void SetTriggerOnHighLevel() const;
+  bool WaitforTriggerSignal() const;
+ void Timesettings(int request_time, int expose_us)  const;
+ void AwaitfirstTrigger() ;
  private:
   static const int kTimeout = -1;//300;
 

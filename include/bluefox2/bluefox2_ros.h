@@ -12,8 +12,10 @@ class Bluefox2Ros : public camera_base::CameraRosBase {
               const std::string& prefix = std::string());
 
   void RequestSingle() const { bluefox2_.RequestSingle(); }
-  Bluefox2& camera() { return bluefox2_; }
+  void AwaitfirstTrigger()  {bluefox2_.AwaitfirstTrigger();}
+  void Preparefortrigger(int request_time,int expose_us)const {bluefox2_.Timesettings(request_time,expose_us);}
 
+  Bluefox2& camera() { return bluefox2_; }
   bool Grab(const sensor_msgs::ImagePtr& image_msg,
             const sensor_msgs::CameraInfoPtr& cinfo_msg) override;
 
