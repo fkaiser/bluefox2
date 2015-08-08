@@ -379,7 +379,7 @@ void Bluefox2::AwaitfirstTrigger()  {
 		result = fi_->imageRequestSingle();
 
 		if (result == DMR_NO_ERROR){
-			request_nr = fi_->imageRequestWaitFor(5);
+			request_nr = fi_->imageRequestWaitFor(-1);
 
 			if(!fi_->isRequestNrValid(request_nr) && ros::ok()) {
 

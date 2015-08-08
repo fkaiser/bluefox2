@@ -18,7 +18,7 @@ void SingleNode::Acquire() {
   ros::Rate r(10); //   Number in Hz
 
   // Prepare camera setting such that it will can catch first trigger event
-  bluefox2_ros_. Preparefortrigger(20,12);
+  bluefox2_ros_.Preparefortrigger(20,12);
 
  // Call ready-for-trigger service
 while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
@@ -28,7 +28,9 @@ while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
 }
 
 // Wait for first trigger signal
-//bluefox2_ros_.AwaitfirstTrigger();
+bluefox2_ros_.AwaitfirstTrigger();
+ROS_INFO("Saw first trigger signal");
+//bluefox2_ros_.
 //bluefox2_ros_.SetCaputereSettings();
 ros::Rate r2(5);
  if (is_acquire() && ros::ok()) {
