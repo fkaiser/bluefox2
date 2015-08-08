@@ -30,7 +30,9 @@ while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
 // Wait for first trigger signal
 bluefox2_ros_.AwaitfirstTrigger();
 ROS_INFO("Saw first trigger signal");
-//bluefox2_ros_.
+
+
+bluefox2_ros_.CallCallbackOnce();
 //bluefox2_ros_.SetCaputereSettings();
 ros::Rate r2(5);
  if (is_acquire() && ros::ok()) {
