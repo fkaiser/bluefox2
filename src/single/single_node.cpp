@@ -18,7 +18,7 @@ void SingleNode::Acquire() {
   ros::Rate r(10); //   Number in Hz
 
   // Prepare camera setting such that it will can catch first trigger event
-  bluefox2_ros_.Preparefortrigger(20,12);
+  bluefox2_ros_.Preparefortrigger(0,12);
 
  // Call ready-for-trigger service
 while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
