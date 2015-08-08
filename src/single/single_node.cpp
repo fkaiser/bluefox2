@@ -33,6 +33,8 @@ ROS_INFO("Saw first trigger signal");
 
 
 bluefox2_ros_.CallCallbackOnce();
+bluefox2_ros_.CallCallbackOnce();
+bluefox2_ros_.CallCallbackOnce();
 //bluefox2_ros_.SetCaputereSettings();
 ros::Rate r2(5);
  if (is_acquire() && ros::ok()) {
