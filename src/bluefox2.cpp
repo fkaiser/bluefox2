@@ -365,16 +365,11 @@ void Bluefox2::Timesettings(int request_time, int expose_us) const{
 
 void Bluefox2::AwaitfirstTrigger()  {
 	int result = DMR_NO_ERROR;
-	result = fi_->imageRequestSingle();
-	if (result != DMR_NO_ERROR) {
-		std::cout << "Error while requesting image: "
-				<< ImpactAcquireException::getErrorCodeAsString(result)
-		<< std::endl;
-	}
 	ros::Rate r(50);
 	int request_nr = INVALID_ID;
 	while(ros::ok())
 	{
+
 
 		result = fi_->imageRequestSingle();
 
@@ -403,12 +398,14 @@ void Bluefox2::AwaitfirstTrigger()  {
 
 				if (!request_->isOK()) {
 					// Unlock image
+					 std::cout << "A request has been returned, but detection of triggering was not successful. Reason: " << request_->requestResult.readS() << "\n";
 					fi_->imageRequestUnlock(request_nr);
 				}
 				else
 				{
 					// Unlock image
 					fi_->imageRequestUnlock(request_nr);
+					ROS_INFO("Detected trigger signal");
 					break;
 				}
 
@@ -418,6 +415,12 @@ void Bluefox2::AwaitfirstTrigger()  {
 
 
 
+		}
+		else
+		{
+			std::cout << "Error while looking for trigger signal: "
+							<< ImpactAcquireException::getErrorCodeAsString(result)
+					<< std::endl;
 		}
 	}
 

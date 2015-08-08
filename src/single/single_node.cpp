@@ -29,7 +29,7 @@ while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
 
 // Wait for first trigger signal
 bluefox2_ros_.AwaitfirstTrigger();
-ROS_INFO("Saw first trigger signal");
+//ROS_INFO("Saw first trigger signal");
 
 
 bluefox2_ros_.CallCallbackOnce();
