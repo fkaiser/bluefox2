@@ -363,6 +363,8 @@ void Bluefox2::Timesettings(int request_time, int expose_us) const{
 
 }
 
+
+
 void Bluefox2::AwaitfirstTrigger()  {
 	int result = DMR_NO_ERROR;
 	ros::Rate r(50);
