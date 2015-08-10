@@ -38,6 +38,8 @@ class Bluefox2 {
   bool WaitforTriggerSignal() const;
  void Timesettings(int request_time, int expose_us)  const;
  void AwaitfirstTrigger() ;
+ bool RequestQueueOnce();
+ bool GrabOneImage();
  private:
   static const int kTimeout = -1;//300;
 

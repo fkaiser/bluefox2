@@ -14,6 +14,11 @@ class Bluefox2Ros : public camera_base::CameraRosBase {
   void RequestSingle() const { bluefox2_.RequestSingle(); }
   void AwaitfirstTrigger()  {bluefox2_.AwaitfirstTrigger();}
   void Preparefortrigger(int request_time,int expose_us)const {bluefox2_.Timesettings(request_time,expose_us);}
+  void SetforCapture(int request_time,int expose_us)const {bluefox2_.Timesettings(request_time,expose_us);}
+  bool GetSingleImage();
+
+
+
 
   Bluefox2& camera() { return bluefox2_; }
   bool Grab(const sensor_msgs::ImagePtr& image_msg,

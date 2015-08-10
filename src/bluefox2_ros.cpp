@@ -38,4 +38,16 @@ bool Bluefox2Ros::Grab(const sensor_msgs::ImagePtr& image_msg,
   return bluefox2_.GrabImage(*image_msg, *cinfo_msg);
 }
 
+
+bool Bluefox2Ros::GetSingleImage() {
+		if (bluefox2_.RequestQueueOnce()) {
+		return GraboneImage();
+		} else {
+			return false;
+
+		}
+	}
+
+
+
 }  // namespace bluefox2

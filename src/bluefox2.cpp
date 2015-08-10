@@ -426,6 +426,26 @@ void Bluefox2::AwaitfirstTrigger()  {
 
 
 }
+
+
+bool Bluefox2::RequestQueueOnce() {
+  int result = DMR_NO_ERROR;
+
+  // Put object in Request queue;
+  result = fi_->imageRequestSingle();
+
+  // Check whether request object could be placed in request queue
+  if (result != DMR_NO_ERROR) {
+    std::cout << "Error while requesting image: "
+              << ImpactAcquireException::getErrorCodeAsString(result)
+              << std::endl;
+    return false;
+  }
+
+  return true;
+
+}
+
 } // namespace bluefox2
 
 

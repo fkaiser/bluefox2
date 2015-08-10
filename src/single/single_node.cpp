@@ -18,7 +18,9 @@ void SingleNode::Acquire() {
   ros::Rate r(10); //   Number in Hz
 
   // Prepare camera setting such that it will can catch first trigger event
+
   bluefox2_ros_.Preparefortrigger(0,12);
+
 
  // Call ready-for-trigger service
 while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
@@ -29,42 +31,25 @@ while(!bluefox2_ros_.SendReadyforTrigger() && ros::ok())
 
 // Wait for first trigger signal
 bluefox2_ros_.AwaitfirstTrigger();
-//ROS_INFO("Saw first trigger signal");
-
 
 bluefox2_ros_.CallCallbackOnce();
-bluefox2_ros_.CallCallbackOnce();
-bluefox2_ros_.CallCallbackOnce();
-//bluefox2_ros_.SetCaputereSettings();
-ros::Rate r2(5);
- if (is_acquire() && ros::ok()) {
 
-	  // Request an image, i.e. put Request Object in Request queue if a Request Object is available
-    //bluefox2_ros_.RequestSingle();
+// Set parameters for capturing images
+bluefox2_ros_.SetforCapture(0,5000);
 
-    //// TODO: Find out what is exact time till sensors starts exposing after triggering signal was sent
-//    const auto expose_us = bluefox2_ros_.camera().expose_us();
-//    const auto expose_duration = ros::Duration(expose_us * 1e-6 / 2);
-//    const auto time =expose_duration;
-//    bluefox2_ros_.UpdateAdded2triggertime(time);
 
-    // Pumps all published and available time stamps of the triggering signal received from ROS network into the callback function BufferTimestamp() such that time stamp
-    // gets buffered
-    //ros::spinOnce();
-   // ros::getGlobalCallbackQueue()->callOne();
+ros::Rate r_loop(35);
+ while (is_acquire() && ros::ok()) {
 
-    // Grab image from camera and cache it in buffer
-    //bluefox2_ros_.GrabandBufferImage();
-    //break;
-    // Check whether there are cached images and corresponding time stamps in the buffer and if so stamp image and publish it in ROS network
-    //bluefox2_ros_.PublishImagebuffer();
+	 // Try to get an image
+	 if(bluefox2_ros_.GetSingleImage()){
 
-    //Sleep();
-    //r2.sleep();
+	// Take corresponding time stamp and publish image TODO: Add exposure time to time stamp
+		bluefox2_ros_.CallCallbackOnce();
+	 }
+
   }
 
-  // Print out which image were left in the buffer
-  //bluefox2_ros_.PrintImageBuffer();
 }
 
 void SingleNode::Setup(Bluefox2DynConfig &config) {
