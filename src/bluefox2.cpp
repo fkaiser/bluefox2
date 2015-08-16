@@ -88,6 +88,7 @@ bool Bluefox2::GrabImage(sensor_msgs::Image &image_msg,
   if (!request_->isOK()) {
 	  std::cout << "A request has been returned, but the acquisition was not successful. Reason: " << request_->requestResult.readS() << "\n";
 	  // Unlock image
+
        fi_->imageRequestUnlock(request_nr);
     return false;
   }
