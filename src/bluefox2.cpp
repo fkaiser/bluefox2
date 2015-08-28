@@ -361,6 +361,7 @@ void Bluefox2::Timesettings(int request_time, int expose_us) const{
 	cam_set_->imageRequestTimeout_ms.write(request_time);
 	 ClampProperty(cam_set_->expose_us, expose_us);
 	  cam_set_->expose_us.write(expose_us);
+	  cam_set_->autoExposeControl.write(aecOn);
 
 }
 
