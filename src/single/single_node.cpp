@@ -42,19 +42,20 @@ bluefox2_ros_.SetforCapture(0,5000);
 
 ros::Rate r_loop(35);
 ros::Duration time_add;
- while (is_acquire() && ros::ok()) {
+while (is_acquire() && ros::ok()) {
 
-	 // Try to get an image
-	 if(bluefox2_ros_.GetSingleImage()){
-		 // Get used exposure time
-		  const auto expose_us = bluefox2_ros_.camera().expose_us();
-		  time_add= ros::Duration(expose_us * 1e-6 / 2);
-		  bluefox2_ros_.UpdateAddtime(time_add);
-		 // Take corresponding time stamp and publish image TODO: Add exposure time to time stamp
-		 bluefox2_ros_.CallCallbackOnce();
-	 }
+	// Try to get an image
+	if(bluefox2_ros_.GetSingleImage()){
+		// Get used exposure time
+		const auto expose_us = bluefox2_ros_.camera().expose_us();
+		time_add= ros::Duration(expose_us * 1e-6 / 2);
+		bluefox2_ros_.UpdateAddtime(time_add);
 
-  }
+		// Take corresponding time stamp and publish image TODO: Add exposure time to time stamp
+		bluefox2_ros_.CallCallbackOnce();
+	}
+
+}
 
 }
 
